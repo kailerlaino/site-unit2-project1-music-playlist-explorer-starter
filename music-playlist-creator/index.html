@@ -1,27 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Music Playlist Explorer</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <!-- Your header content here -->
+      <!-- Your header content here -->
+      <h1>Music Playlist Explorer</h1>
     </header>
 
-    <main> 
-        <!-- Your main content here -->
+    <main>
+      <!-- Your main content here -->
+      <section class="playlist-cards">
+        This is where the main playlist section will be
+        <article>
+          <img alt="image of artist" />
+          <h3>Playlist Title</h3>
+          <p>Creator Name</p>
+          <div
+            onclick="openModal({name: 'Summer Beats Festival', imageUrl: 'path/to/festival.jpg', dates: 'July 15-17', location: 'Downtown Park', lineup: ['Artist A', 'Artist B']})"
+          >
+            Click here for festival details!
+          </div>
+        </article>
+      </section>
     </main>
 
+    <!-- Modal Structure -->
+    <div id="playlistmModal" class="modal-overlay">
+      <div class="modal-content">
+        <img alt="playlist picture" />
+        <h2>Playlist Title</h2>
+        <p>Creator Name</p>
+        <article>
+            <img alt="song picture">
+            <h4>Song Title</h4>
+            <p>Artist Name</p>
+            <p>Album Name</p>
+            <p>0:00</p>
+        </article>
+        <article>
+            <img alt="song picture">
+            <h4>Song Title</h4>
+            <p>Artist Name</p>
+            <p>Album Name</p>
+            <p>0:00</p>
+        </article>
+        <article>
+            <img alt="song picture">
+            <h4>Song Title</h4>
+            <p>Artist Name</p>
+            <p>Album Name</p>
+            <p>0:00</p>
+        </article>
+      </div>
+    </div>
+
     <footer>
-        <!-- Your footer content here -->
+      <!-- Your footer content here -->
+      This is where the footer will be located
     </footer>
     <script src="data/data.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
