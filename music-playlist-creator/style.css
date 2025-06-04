@@ -4,6 +4,46 @@ body {
     padding: 0;
     background-color: #f8f8f8;
 }
+
+header {
+    background-color: lightgrey;
+    text-align: center;
+    padding:1px
+}
+
+footer {
+    background-color: lightgrey;
+    text-align: center;
+    padding: 1px;
+}
+
+.playlist-cards {
+    display: flex;
+    gap: 20px;
+    flex-flow: row wrap;
+}
+
+#playlist-cards {
+    display: flex;
+    gap: 20px;
+    flex-flow: row wrap;
+}
+
+
+
+
+.playlist-item {
+    background-color: pink;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.playlist-item:hover {
+    background-color: lightpink;
+}
+
 /* CSS for Modal */
 .modal-overlay {
    display: none; /* Hidden by default */
@@ -16,12 +56,28 @@ body {
    overflow: auto; /* Enable scroll if needed */
    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
 .modal-content {
    background-color: #fefefe;
-   margin: 15% auto; /* 15% from the top and centered */
+   margin: 5% auto; /* 15% from the top and centered */
    padding: 20px;
    border: 1px solid #888;
    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal-playlist {
+    display:flex;
+    gap: 20px
+}
+
+.modal-song {
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+#song-picture {
+    float: left;
 }
 .close {
    color: #aaa;

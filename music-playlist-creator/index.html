@@ -18,46 +18,84 @@
     <main>
       <!-- Your main content here -->
       <section class="playlist-cards">
-        This is where the main playlist section will be
-        <article>
-          <img alt="image of artist" />
+        <article onclick="openModal()" class="playlist-item">
+          <img
+            src="assets/img/playlist.png"
+            alt="image of playlist"
+            height="100"
+            width="100"
+          />
           <h3>Playlist Title</h3>
           <p>Creator Name</p>
-          <div
-            onclick="openModal({name: 'Summer Beats Festival', imageUrl: 'path/to/festival.jpg', dates: 'July 15-17', location: 'Downtown Park', lineup: ['Artist A', 'Artist B']})"
-          >
-            Click here for festival details!
-          </div>
+          <p>♡ 133</p>
         </article>
+        <div id="playlist-cards"></div>
       </section>
     </main>
 
     <!-- Modal Structure -->
-    <div id="playlistmModal" class="modal-overlay">
+    <div id="playlistModal" class="modal-overlay">
       <div class="modal-content">
-        <img alt="playlist picture" />
-        <h2>Playlist Title</h2>
-        <p>Creator Name</p>
-        <article>
-            <img alt="song picture">
-            <h4>Song Title</h4>
-            <p>Artist Name</p>
-            <p>Album Name</p>
-            <p>0:00</p>
+        <span class="close">&times;</span>
+        <article class="modal-playlist">
+          <div>
+            <img
+              src="assets/img/playlist.png"
+              alt="playlist picture"
+              height="200"
+              width="200"
+            />
+          </div>
+          <div>
+            <h2>Playlist Title</h2>
+            <p>Creator Name</p>
+          </div>
         </article>
-        <article>
-            <img alt="song picture">
+
+        <article class="modal-song">
+          <div>
+            <img
+              src="assets/img/song.png"
+              alt="song picture"
+              height="100"
+              width="100"
+            />
+          </div>
+          <div>
             <h4>Song Title</h4>
             <p>Artist Name</p>
             <p>Album Name</p>
-            <p>0:00</p>
+          </div>
         </article>
-        <article>
-            <img alt="song picture">
+        <article class="modal-song">
+          <div>
+            <img
+              src="assets/img/song.png"
+              alt="song picture"
+              height="100"
+              width="100"
+            />
+          </div>
+          <div>
             <h4>Song Title</h4>
             <p>Artist Name</p>
             <p>Album Name</p>
-            <p>0:00</p>
+          </div>
+        </article>
+        <article class="modal-song">
+          <div>
+            <img
+              src="assets/img/song.png"
+              alt="song picture"
+              height="100"
+              width="100"
+            />
+          </div>
+          <div>
+            <h4>Song Title</h4>
+            <p>Artist Name</p>
+            <p>Album Name</p>
+          </div>
         </article>
       </div>
     </div>

@@ -1,0 +1,49 @@
+[
+  {
+    "playlistID": "pl_001",
+    "playlist_name": "Chill Vibes",
+    "playlist_author": "Alice",
+    "playlist_art": "https://picsum.photos/id/237/200/300",
+    "playlist_likes": "100",
+    "songs": [
+      {
+        "songID": "s_101",
+        "title": "Dreamscape",
+        "artist": "DJ Relax",
+        "duration": 210
+      },
+      {
+        "songID": "s_102",
+        "title": "Evening Glow",
+        "artist": "Sunset Crew",
+        "duration": 185
+      }
+    ]
+  },
+  {
+    "playlistID": "pl_002",
+    "playlist_name": "Workout Hits",
+    "playlist_author": "Bob",
+    "playlist_art": "https://picsum.photos/seed/picsum/200/300",
+    "songs": [
+      {
+        "songID": "s_201",
+        "title": "Pump It Up",
+        "artist": "Energy Squad",
+        "duration": 195
+      },
+      {
+        "songID": "s_202",
+        "title": "Run Faster",
+        "artist": "Beat Masters",
+        "duration": 180
+      },
+      {
+        "songID": "s_203",
+        "title": "Final Lap",
+        "artist": "Sprint King",
+        "duration": 200
+      }
+    ]
+  }
+]
