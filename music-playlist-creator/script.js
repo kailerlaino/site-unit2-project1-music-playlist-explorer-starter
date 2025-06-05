@@ -1,4 +1,3 @@
-// JavaScript for Opening and Closing the Modal
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
@@ -11,6 +10,39 @@ function openModal(festival) {
   modal.style.display = "block";
 }
 
+document.addEventListener("DOMContentLoaded", (event) => {
+  renderPlaylists();
+});
+
+function renderPlaylists(playlists) {
+  fetch("data/data.json")
+    .then((response) => response.json())
+    .then((playlists) => {
+      const playlistList = document.getElementById("playlist-cards");
+      playlists.forEach((playlist) => {
+        const playlistElement = createPlaylist(playlist);
+        playlistList.appendChild(playlistElement);
+      });
+    })
+    .catch((error) => console.error("Error loading playlists:", error));
+}
+
+function createPlaylist(playlist) {
+  const div = document.createElement("div");
+  div.className = "playlist";
+  div.innerHTML = `
+      <img onclick="openModal()" src=${playlist.playlist_art}
+        alt="image of playlist"
+        height="100"
+        width="100">
+      <h3>${playlist.playlist_name}</h3>
+      <p>${playlist.playlist_author}</p>
+      <span class="like-button">♡</span>
+      <span class="like-count" >${playlist.playlist_likes}</span> Likes
+    `;
+  return div;
+}
+
 span.onclick = function () {
   modal.style.display = "none";
 };
@@ -21,39 +53,20 @@ window.onclick = function (event) {
   }
 };
 
-fetch("data/data.json")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Error fetching data");
-    }
-    return response.json(); // Assuming the server sends JSON
-  })
-  .then(data => {
-    renderPlaylists(data)
-  })
-  .catch(error => {
-    console.error('There was a problem rendering playlists:', error);
-  });
+function toggleLike() {
+  document
+    .getElementById("playlist-cards")
+    .addEventListener("click", function (event) {
+      const button = event.target.closest(".like-button");
+      if (!button) return;
 
-function renderPlaylists(playlists) {
-  const container = document.getElementById("playlist-cards");
+      const itemId = button.getAttribute("data-item-id");
+      const countSpan = button.parentNode.querySelector(".like-count");
 
-
-  playlists.forEach(playlist => {
-    const playlistDiv = document.createElement("div");
-    playlistDiv.className = "playlist-item";
-
-    playlistDiv.innerHTML = `
-      <img src=${playlist.playlist_art}
-            alt="image of playlist"
-            height="100"
-            width="100">
-      <h3>${playlist.playlist_name}</h3>
-      <p>${playlist.playlist_author}</p>
-      <p>♡${playlist.playlist_likes}</p>
-    `
-    console.log(playlist.playlist_name);
-    container.appendChild(playlistDiv);
-  })
+      const liked = button.classList.toggle("liked");
+      let count = parseInt(countSpan.textContent, 10);
+      count = liked ? count + 1 : count - 1;
+      countSpan.textContent = count;
+      button.textContent = liked ? "♥" : "♡";
+    });
 }
-

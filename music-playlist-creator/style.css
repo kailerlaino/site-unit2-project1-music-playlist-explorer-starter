@@ -32,7 +32,7 @@ footer {
 
 
 
-.playlist-item {
+.playlist {
     background-color: pink;
     padding: 10px;
     margin: 10px;
@@ -40,7 +40,7 @@ footer {
     border-radius: 10px;
 }
 
-.playlist-item:hover {
+.playlist:hover {
     background-color: lightpink;
 }
 
