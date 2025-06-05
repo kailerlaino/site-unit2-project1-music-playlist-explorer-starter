@@ -25,6 +25,8 @@
     "playlist_name": "Workout Hits",
     "playlist_author": "Bob",
     "playlist_art": "https://picsum.photos/seed/picsum/200/300",
+    "playlist_likes": "100",
+
     "songs": [
       {
         "songID": "s_201",

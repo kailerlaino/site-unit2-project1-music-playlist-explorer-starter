@@ -3,40 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Music Playlist Explorer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
       <!-- Your header content here -->
-      <h1>Music Playlist Explorer</h1>
+      <h1>Metafy</h1>
     </header>
 
     <main>
       <!-- Your main content here -->
-      <section class="playlist-cards">
-        <article  class="playlist">
-          <img
-            onclick="openModal()"
-            src="assets/img/playlist.png"
-            alt="image of playlist"
-            height="100"
-            width="100"
-          />
-          <h3>Playlist Title</h3>
-          <p>Creator Name</p>
-          <p>♡ 133</p>
-        </article>
+      <section class="playlist-section">
         <div id="playlist-cards"></div>
       </section>
     </main>
 
     <!-- Modal Structure -->
     <div id="playlistModal" class="modal-overlay">
-      <div class="modal-content">
+      <div id="modal-content">
         <span class="close">&times;</span>
         <article class="modal-playlist">
           <div>
@@ -48,24 +34,8 @@
             />
           </div>
           <div>
-            <h2>Playlist Title</h2>
-            <p>Creator Name</p>
-          </div>
-        </article>
-
-        <article class="modal-song">
-          <div>
-            <img
-              src="assets/img/song.png"
-              alt="song picture"
-              height="100"
-              width="100"
-            />
-          </div>
-          <div>
-            <h4>Song Title</h4>
-            <p>Artist Name</p>
-            <p>Album Name</p>
+            <h2 id="modal-name">Playlist Title</h2>
+            <p id="modal-author">Creator Name</p>
           </div>
         </article>
       </div>

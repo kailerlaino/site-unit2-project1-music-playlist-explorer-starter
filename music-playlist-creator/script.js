@@ -1,46 +1,30 @@
+let playlistState = [];
+
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
-function openModal(festival) {
+function openModal(playlist) {
   //    document.getElementById('festivalName').innerText = festival.name;
   //    document.getElementById('festivalImage').src = festival.imageUrl;
   //    document.getElementById('festivalDates').innerText = `Dates: ${festival.dates}`;
   //    document.getElementById('festivalLocation').innerText = `Location: ${festival.location}`;
   //    document.getElementById('artistLineup').innerHTML = `<strong>Lineup:</strong> ${festival.lineup.join(', ')}`;
-  modal.style.display = "block";
-}
-
-document.addEventListener("DOMContentLoaded", (event) => {
-  renderPlaylists();
-});
-
-function renderPlaylists(playlists) {
-  fetch("data/data.json")
-    .then((response) => response.json())
-    .then((playlists) => {
-      const playlistList = document.getElementById("playlist-cards");
-      playlists.forEach((playlist) => {
-        const playlistElement = createPlaylist(playlist);
-        playlistList.appendChild(playlistElement);
+  // const container = document.getElementById("modal-content");
+  console.log(playlist);
+  const container = document.getElementById("modal-content");
+  document.getElementById("modal-name").innerHTML = `${playlist.playlist_name}`;
+  document.getElementById(
+    "modal-author"
+  ).innerHTML = `${playlist.playlist_author}`;
+  playlist.songs.forEach((song) => {
+        const songElement = createSongElement(song);
+        container.appendChild(songElement);
       });
-    })
-    .catch((error) => console.error("Error loading playlists:", error));
-}
+  // playlist.forEach((song) => {
 
-function createPlaylist(playlist) {
-  const div = document.createElement("div");
-  div.className = "playlist";
-  div.innerHTML = `
-      <img onclick="openModal()" src=${playlist.playlist_art}
-        alt="image of playlist"
-        height="100"
-        width="100">
-      <h3>${playlist.playlist_name}</h3>
-      <p>${playlist.playlist_author}</p>
-      <span class="like-button">♡</span>
-      <span class="like-count" >${playlist.playlist_likes}</span> Likes
-    `;
-  return div;
+  // })
+
+  modal.style.display = "block";
 }
 
 span.onclick = function () {
@@ -52,6 +36,62 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  renderPlaylists();
+});
+
+function renderPlaylists(playlists) {
+  fetch("data/data.json")
+    .then((response) => response.json())
+    .then((playlists) => {
+      playlistState = playlists;
+      const playlistList = document.getElementById("playlist-cards");
+      playlists.forEach((playlist) => {
+        const playlistElement = createPlaylistElement(playlist);
+        playlistList.appendChild(playlistElement);
+      });
+    })
+    .catch((error) => console.error("Error loading playlists:", error));
+}
+
+function createPlaylistElement(playlist) {
+  const div = document.createElement("div");
+  div.className = "playlist";
+  div.innerHTML = `
+      <img 
+        onclick='openModal(${JSON.stringify(playlist)})'
+        src=${playlist.playlist_art}
+        alt="image of playlist"
+        height="100"
+        width="100">
+      <h3>${playlist.playlist_name}</h3>
+      <p>${playlist.playlist_author}</p>
+      <span class="like-button">♡</span>
+      <span class="like-count" >${playlist.playlist_likes}</span> Likes
+    `;
+  return div;
+}
+
+function createSongElement(song) {
+  const div = document.createElement("div");
+  div.className = "modal-song";
+  div.innerHTML = `
+      <img
+        src="assets/img/song.png"
+        alt="song picture"            
+        height="100"
+        width="100">
+      <div>
+        <h4>${song.title}</h4>
+        <p>${song.artist}</p>
+        <br>
+      </div>
+      <p>${song.duration} seconds</p>
+
+    `;
+  return div;
+}
 
 function toggleLike() {
   document
