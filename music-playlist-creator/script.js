@@ -41,16 +41,27 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   console.log(playlistState);
 });
 
+const searchInput = document.querySelector("[data-search]")
+
+searchInput.addEventListener("input", e => {
+  const value = e.target.value.toLowerCase()
+  playlistState.forEach(playlist => {
+    const isVisible = playlist.name.toLowerCase().includes(value) || playlist.artist.toLowerCase().includes(value)
+    playlist.element.classList.toggle("hide", !isVisible)
+  })
+})
+
 async function renderPlaylists() {
   await fetch("data/data.json")
     .then((response) => response.json())
     .then((playlists) => {
-      playlistState = playlists;
+      // playlistState = playlists;
       lastReviewId = playlists.length;
       const playlistContainer = document.getElementById("playlist-cards");
-      playlists.forEach((playlist) => {
+      playlistState = playlists.map((playlist) => {
         const playlistElement = createPlaylistElement(playlist);
         playlistContainer.appendChild(playlistElement);
+        return {name: playlist.playlist_name, artist: playlist.playlist_author, element: playlistElement }
       });
     })
     .catch((error) => console.error("Error loading playlists:", error));

@@ -19,6 +19,10 @@
     </nav>
     <main>
       <!-- Your main content here -->
+      <section class="search-wrapper">
+        <label for="search">Search Playlists</label>
+        <input type="search" id="search" data-search>
+      </section>
       <section id="playlist-form-section">
         <h2>Add Your Playlist</h2>
         <form id="playlist-form">
@@ -27,7 +31,7 @@
           <label for="playlist-author">Artist:</label>
           <input id="playlist-author" name="playlist-author" required />
           <label for="playlist-art">Playlist Cover:</label>
-          <input id="playlist-art" name="playlist-art">
+          <input id="playlist-art" name="playlist-art" />
           <button type="submit">Add Playlist</button>
         </form>
       </section>
