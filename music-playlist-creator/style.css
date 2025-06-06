@@ -62,6 +62,7 @@ footer {
 
 .playlist img {
   width: 100%;
+  min-height: 50px;
   border-radius: 6px;
   margin-bottom: 10px;
 }
@@ -78,6 +79,26 @@ footer {
   color: #989898;
   line-height: 20px;
   font-weight: 600;
+}
+
+button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #367c39; /* Darker green */
+
 }
 
 /* Add rounded corners to the top left and the top right corner of the image */
@@ -145,7 +166,7 @@ img {
 .like-container {
   display: flex;
   align-items: center;
-  margin: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
@@ -170,25 +191,6 @@ img {
   font-size: 1.5rem;
 }
 
-#shuffle-button {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-#shuffle-button:hover {
-  background-color: #367c39; /* Darker green */
-}
-
 #shuffle-button::before {
   content: "\21BB";
   margin-right: 5px;
@@ -196,5 +198,6 @@ img {
 
 #featured-section {
   display: flex;
+  gap: 10px;
   padding: 20px;
 }

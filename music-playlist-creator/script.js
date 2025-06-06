@@ -8,7 +8,9 @@ function openModal(playlist) {
   document.getElementById(
     "modal-author"
   ).innerHTML = `${playlist.playlist_author}`;
-  document.getElementById("modal-playlist-art").src = `${playlist.playlist_art}`
+  document.getElementById(
+    "modal-playlist-art"
+  ).src = `${playlist.playlist_art}`;
   const songContainer = document.getElementById("modal-songs");
   console.log("container in openModal" + songContainer.innerHTML);
   songContainer.innerHTML = "";
@@ -34,7 +36,9 @@ window.onclick = function (event) {
 document.addEventListener("DOMContentLoaded", async (event) => {
   await renderPlaylists();
   renderLikes();
-  document.getElementById('playlist-form').addEventListener('submit', handleReviewSubmit);
+  document
+    .getElementById("playlist-form")
+    .addEventListener("submit", handleReviewSubmit);
 });
 
 async function renderPlaylists() {
@@ -88,6 +92,7 @@ function createPlaylistElement(playlist) {
         <span class="like-count" >${playlist.playlist_likes}</span> 
       </div>
       <button onclick="deleteData(this)">Delete</button>
+      <button onclick="editData(this)">Edit</button>
     `;
   return div;
 }
@@ -125,28 +130,51 @@ function shuffleSongs() {
 }
 
 function handleReviewSubmit(event) {
-    event.preventDefault();
-    const playlist_name = document.getElementById('playlist-name').value;
-    const playlist_author = document.getElementById('playlist-author').value;
-    const playlist_art = document.getElementById('playlist-art').value;
+  event.preventDefault();
+  const playlist_name = document.getElementById("playlist-name").value;
+  const playlist_author = document.getElementById("playlist-author").value;
+  const playlist_art = document.getElementById("playlist-art").value;
 
-    lastReviewId += 1;
+  lastReviewId += 1;
 
-    const newPlaylist = {
-        playlistID: "pl_" + lastReviewId,
-        playlist_name,
-        playlist_author,
-        playlist_art,
-        playlist_likes: 0
-    };
+  const newPlaylist = {
+    playlistID: "pl_" + lastReviewId,
+    playlist_name,
+    playlist_author,
+    playlist_art,
+    playlist_likes: 0,
+  };
 
-    const playlistContainer = document.getElementById('playlist-cards');
-    playlistContainer.insertBefore(createPlaylistElement(newPlaylist), playlistContainer.firstChild);
-    event.target.reset(); 
-    renderLikes();
+  const playlistContainer = document.getElementById("playlist-cards");
+  playlistContainer.insertBefore(
+    createPlaylistElement(newPlaylist),
+    playlistContainer.firstChild
+  );
+  event.target.reset();
+  renderLikes();
 }
 
 function deleteData(button) {
-  button.parentNode.parentNode.removeChild(button.parentNode);
+  let playlistContainer = button.parentNode.parentNode;
+  let playlist = button.parentNode;
+  playlistContainer.removeChild(playlist);
 }
 
+function editData(button) {
+  // Get the parent row of the clicked button
+  let playlist = button.parentNode;
+
+  let children = playlist.children;
+
+  let imgCell = children[0]
+  let artistCell = children[1]
+  let nameCell = children[2]
+
+  let imgInput = prompt("Enter the updated img link:", imgCell.innerHTML);
+  let nameInput = prompt("Enter the updated playlist name:", artistCell.innerHTML);
+  let artistInput = prompt("Enter the updated artist:", nameCell.innerHTML);
+
+  imgCell.innerHTML = imgInput;
+  nameCell.innerHTML = nameInput;
+  artistCell.innerHTML = artistInput;
+}
