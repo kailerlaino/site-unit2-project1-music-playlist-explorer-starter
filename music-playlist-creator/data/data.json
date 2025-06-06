@@ -1,6 +1,6 @@
 [
   {
-    "playlistID": "pl_001",
+    "playlistID": "pl_1",
     "playlist_name": "Chill Vibes",
     "playlist_author": "Alice",
     "playlist_art": "https://picsum.photos/id/237/200/300",
@@ -21,7 +21,7 @@
     ]
   },
   {
-    "playlistID": "pl_002",
+    "playlistID": "pl_2",
     "playlist_name": "Workout Hits",
     "playlist_author": "Bob",
     "playlist_art": "https://picsum.photos/seed/picsum/200/300",

@@ -1,4 +1,4 @@
-let playlistState = [];
+let lastReviewId = 0;
 
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
@@ -8,6 +8,7 @@ function openModal(playlist) {
   document.getElementById(
     "modal-author"
   ).innerHTML = `${playlist.playlist_author}`;
+  document.getElementById("modal-playlist-art").src = `${playlist.playlist_art}`
   const songContainer = document.getElementById("modal-songs");
   console.log("container in openModal" + songContainer.innerHTML);
   songContainer.innerHTML = "";
@@ -33,6 +34,7 @@ window.onclick = function (event) {
 document.addEventListener("DOMContentLoaded", async (event) => {
   await renderPlaylists();
   renderLikes();
+  document.getElementById('playlist-form').addEventListener('submit', handleReviewSubmit);
 });
 
 async function renderPlaylists() {
@@ -40,6 +42,7 @@ async function renderPlaylists() {
     .then((response) => response.json())
     .then((playlists) => {
       playlistState = playlists;
+      lastReviewId = playlists.length;
       const playlistContainer = document.getElementById("playlist-cards");
       playlists.forEach((playlist) => {
         const playlistElement = createPlaylistElement(playlist);
@@ -84,6 +87,7 @@ function createPlaylistElement(playlist) {
         <span class="heart">♡</span>
         <span class="like-count" >${playlist.playlist_likes}</span> 
       </div>
+      <button onclick="deleteData(this)">Delete</button>
     `;
   return div;
 }
@@ -102,27 +106,9 @@ function createSongElement(song) {
         <p>${song.artist}</p>
         <br>
       </div>
-      <p>${song.duration} seconds</p>
+      <p class="duration">${song.duration} seconds</p>
     `;
   return div;
-}
-
-function toggleLike() {
-  document
-    .getElementById("playlist-cards")
-    .addEventListener("click", function (event) {
-      const button = event.target.closest(".like-button");
-      if (!button) return;
-
-      const itemId = button.getAttribute("data-item-id");
-      const countSpan = button.parentNode.querySelector(".like-count");
-
-      const liked = button.classList.toggle("liked");
-      let count = parseInt(countSpan.textContent, 10);
-      count = liked ? count + 1 : count - 1;
-      countSpan.textContent = count;
-      button.textContent = liked ? "♥" : "♡";
-    });
 }
 
 function shuffleSongs() {
@@ -137,3 +123,30 @@ function shuffleSongs() {
     songContainer.appendChild(song);
   });
 }
+
+function handleReviewSubmit(event) {
+    event.preventDefault();
+    const playlist_name = document.getElementById('playlist-name').value;
+    const playlist_author = document.getElementById('playlist-author').value;
+    const playlist_art = document.getElementById('playlist-art').value;
+
+    lastReviewId += 1;
+
+    const newPlaylist = {
+        playlistID: "pl_" + lastReviewId,
+        playlist_name,
+        playlist_author,
+        playlist_art,
+        playlist_likes: 0
+    };
+
+    const playlistContainer = document.getElementById('playlist-cards');
+    playlistContainer.insertBefore(createPlaylistElement(newPlaylist), playlistContainer.firstChild);
+    event.target.reset(); 
+    renderLikes();
+}
+
+function deleteData(button) {
+  button.parentNode.parentNode.removeChild(button.parentNode);
+}
+

@@ -13,8 +13,24 @@
       <h1>Metafy</h1>
     </header>
 
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="featured.html">Featured</a>
+    </nav>
     <main>
       <!-- Your main content here -->
+      <section id="playlist-form-section">
+        <h2>Add Your Playlist</h2>
+        <form id="playlist-form">
+          <label for="playlist-name">Playlist Title:</label>
+          <input type="text" id="playlist-name" name="playlist-name" required />
+          <label for="playlist-author">Artist:</label>
+          <input id="playlist-author" name="playlist-author" required />
+          <label for="playlist-art">Playlist Cover:</label>
+          <input id="playlist-art" name="playlist-art">
+          <button type="submit">Add Playlist</button>
+        </form>
+      </section>
       <section class="playlist-section">
         <div id="playlist-cards"></div>
       </section>
@@ -25,11 +41,12 @@
       <div id="modal-content">
         <button onclick="shuffleSongs()" id="shuffle-button">Shuffle</button>
         <span class="close">&times;</span>
-        
-        <article class="modal-playlist">
+
+        <article class="songlist">
           <div>
             <img
-              src="assets/img/playlist.png"
+              id="modal-playlist-art"
+              src=""
               alt="playlist picture"
               height="200"
               width="200"
@@ -40,9 +57,7 @@
             <p id="modal-author">Creator Name</p>
           </div>
         </article>
-        <div id="modal-songs">
-          
-        </div>
+        <div id="modal-songs"></div>
       </div>
     </div>
 

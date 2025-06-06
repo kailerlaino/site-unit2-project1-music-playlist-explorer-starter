@@ -1,127 +1,177 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
 }
 
 header {
-    background-color: lightgrey;
-    text-align: center;
-    padding:1px
+  background-color: lightgrey;
+  text-align: center;
+  padding: 1px;
+  margin-bottom: 20px;
+}
+
+.navbar {
+  background-color: lightgrey;
+  overflow: hidden;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
 footer {
-    background-color: lightgrey;
-    text-align: center;
-    padding: 1px;
+  background-color: lightgrey;
+  text-align: center;
+  padding: 1px;
+  margin-top: 20px;
 }
 
 .playlist-cards {
-    display: flex;
-    gap: 20px;
-    flex-flow: row wrap;
+  display: flex;
+  gap: 20px;
+  flex-flow: row wrap;
 }
 
 #playlist-cards {
-    display: flex;
-    gap: 20px;
-    flex-flow: row wrap;
+  display: flex;
+  gap: 20px;
+  flex-flow: row wrap;
+  padding: 20px 20px;
 }
 
-
-
-
 .playlist {
-    background-color: pink;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
+  background-color: lightgray;
+  min-width: 140px;
+  width: 160px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all ease 0.4s;
+  border-radius: 6px;
+}
+
+.playlist img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.playlist h3 {
+  color: #ffffff;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlist p {
+  color: #989898;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+  border-radius: 5px 5px 0 0;
 }
 
 .playlist:hover {
-    background-color: lightpink;
+  background-color: lightpink;
 }
 
 /* CSS for Modal */
 .modal-overlay {
-   display: none; /* Hidden by default */
-   position: fixed; /* Stay in place */
-   z-index: 1; /* Sit on top */
-   left: 0;
-   top: 0;
-   width: 100%; /* Full width */
-   height: 100%; /* Full height */
-   overflow: auto; /* Enable scroll if needed */
-   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 #modal-content {
-   background-color: #fefefe;
-   margin: 5% auto; /* 15% from the top and centered */
-   padding: 20px;
-   border: 1px solid #888;
-   width: 80%; /* Could be more or less, depending on screen size */
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 
-.modal-playlist {
-    display:flex;
-    gap: 20px
+.songlist {
+  display: flex;
+  gap: 20px;
+}
+
+.duration {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .song-element {
-    display:flex;
-    align-items: center;
-    gap:10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 #song-picture {
-    float: left;
+  float: left;
 }
 .close {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 .close:hover,
 .close:focus {
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .like-container {
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .heart {
-    font-size: 2rem;
-    transition: color 0.3s;
+  font-size: 2rem;
+  transition: color 0.3s;
 }
 .heart:hover {
-    color: gray;
+  color: gray;
 }
 
 .heart.liked {
-    color: red;
+  color: red;
 }
 
 .heart.liked:hover {
-    color:pink;
+  color: pink;
 }
 
 .like-count {
-    margin-left: 10px;
-    font-size: 1.5rem;
+  margin-left: 10px;
+  font-size: 1.5rem;
 }
 
 #shuffle-button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50; /* Green */
   border: none;
   color: white;
   padding: 10px 20px;
@@ -142,4 +192,9 @@ footer {
 #shuffle-button::before {
   content: "\21BB";
   margin-right: 5px;
+}
+
+#featured-section {
+  display: flex;
+  padding: 20px;
 }
