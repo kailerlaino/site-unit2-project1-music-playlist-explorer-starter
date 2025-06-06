@@ -12,14 +12,12 @@ function openModal(playlist) {
     "modal-playlist-art"
   ).src = `${playlist.playlist_art}`;
   const songContainer = document.getElementById("modal-songs");
-  console.log("container in openModal" + songContainer.innerHTML);
   songContainer.innerHTML = "";
   playlist.songs.forEach((song) => {
     const songElement = createSongElement(song);
     songContainer.appendChild(songElement);
   });
   const songs = Array.from(songContainer);
-  console.log("songs after append:" + songContainer.innerHTML);
   modal.style.display = "block";
 }
 
@@ -32,6 +30,7 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+let playlistState = [];
 
 document.addEventListener("DOMContentLoaded", async (event) => {
   await renderPlaylists();
@@ -39,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   document
     .getElementById("playlist-form")
     .addEventListener("submit", handleReviewSubmit);
+  console.log(playlistState);
 });
 
 async function renderPlaylists() {
@@ -145,6 +145,9 @@ function handleReviewSubmit(event) {
     playlist_likes: 0,
   };
 
+  playlistState[lastReviewId] = newPlaylist;
+  console.log(playlistState);
+
   const playlistContainer = document.getElementById("playlist-cards");
   playlistContainer.insertBefore(
     createPlaylistElement(newPlaylist),
@@ -166,12 +169,15 @@ function editData(button) {
 
   let children = playlist.children;
 
-  let imgCell = children[0]
-  let artistCell = children[1]
-  let nameCell = children[2]
+  let imgCell = children[0];
+  let artistCell = children[1];
+  let nameCell = children[2];
 
   let imgInput = prompt("Enter the updated img link:", imgCell.innerHTML);
-  let nameInput = prompt("Enter the updated playlist name:", artistCell.innerHTML);
+  let nameInput = prompt(
+    "Enter the updated playlist name:",
+    artistCell.innerHTML
+  );
   let artistInput = prompt("Enter the updated artist:", nameCell.innerHTML);
 
   imgCell.innerHTML = imgInput;
