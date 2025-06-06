@@ -41,15 +41,77 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   console.log(playlistState);
 });
 
-const searchInput = document.querySelector("[data-search]")
+const searchInput = document.querySelector("[data-search]");
+const searchButton = document.getElementById("search-button");
+const clearButton = document.getElementById("clear-button");
 
-searchInput.addEventListener("input", e => {
-  const value = e.target.value.toLowerCase()
-  playlistState.forEach(playlist => {
-    const isVisible = playlist.name.toLowerCase().includes(value) || playlist.artist.toLowerCase().includes(value)
-    playlist.element.classList.toggle("hide", !isVisible)
-  })
-})
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    search(e);
+  }
+});
+
+searchButton.addEventListener("click", search);
+
+clearButton.addEventListener("click", clear);
+
+function search() {
+  const value = searchInput.value.toLowerCase();
+  playlistState.forEach((playlist) => {
+    const isVisible =
+      playlist.name.toLowerCase().includes(value) ||
+      playlist.artist.toLowerCase().includes(value);
+    playlist.element.classList.toggle("hide", !isVisible);
+  });
+  renderLikes();
+}
+
+function clear() {
+  searchInput.value = "";
+  playlistState.forEach((playlist) => {
+    playlist.element.classList.toggle("hide", false);
+  });
+  renderLikes();
+}
+
+function sortPlaylistByName() {
+  const container = document.getElementById("playlist-cards");
+  const divs = Array.from(container.children);
+  divs.sort((a, b) => {
+    const aText = a.querySelector("h3").textContent;
+    const bText = b.querySelector("h3").textContent;
+    return aText.localeCompare(bText);
+  });
+  divs.forEach((div) => container.appendChild(div));
+}
+
+function sortPlaylistByLikes() {
+  const container = document.getElementById("playlist-cards");
+  const divs = Array.from(container.children);
+  divs.sort((a, b) => {
+    const aNum = parseInt(a.querySelector(".like-count").textContent);
+    const bNum = parseInt(b.querySelector(".like-count").textContent);
+    return bNum - aNum;
+  });
+  divs.forEach((div) => container.appendChild(div));
+}
+
+function sortPlaylistByDate() {
+  const container = document.getElementById("playlist-cards");
+  const divs = Array.from(container.children);
+  divs.sort((a, b) => {
+    const aDate = a.dataset.date;
+    const bDate = b.dataset.date;
+    if (aDate < bDate) {
+      return -1;
+    } else if (aDate > bDate) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  divs.forEach((div) => container.appendChild(div));
+}
 
 async function renderPlaylists() {
   await fetch("data/data.json")
@@ -61,7 +123,12 @@ async function renderPlaylists() {
       playlistState = playlists.map((playlist) => {
         const playlistElement = createPlaylistElement(playlist);
         playlistContainer.appendChild(playlistElement);
-        return {name: playlist.playlist_name, artist: playlist.playlist_author, element: playlistElement }
+        return {
+          id: playlist.playlistID,
+          name: playlist.playlist_name,
+          artist: playlist.playlist_author,
+          element: playlistElement,
+        };
       });
     })
     .catch((error) => console.error("Error loading playlists:", error));
@@ -89,6 +156,7 @@ function renderLikes() {
 function createPlaylistElement(playlist) {
   const div = document.createElement("div");
   div.className = "playlist";
+  div.setAttribute("data-date", new Date());
   div.innerHTML = `
       <img 
         onclick='openModal(${JSON.stringify(playlist)})'
@@ -147,23 +215,27 @@ function handleReviewSubmit(event) {
   const playlist_art = document.getElementById("playlist-art").value;
 
   lastReviewId += 1;
+  newID = "pl_" + lastReviewId;
 
   const newPlaylist = {
-    playlistID: "pl_" + lastReviewId,
+    playlistID: newID,
     playlist_name,
     playlist_author,
     playlist_art,
     playlist_likes: 0,
   };
 
-  playlistState[lastReviewId] = newPlaylist;
-  console.log(playlistState);
+  playlistElement = createPlaylistElement(newPlaylist);
+
+  playlistState[lastReviewId] = {
+    id: newID + lastReviewId,
+    name: playlist_name,
+    artist: playlist_author,
+    element: playlistElement,
+  };
 
   const playlistContainer = document.getElementById("playlist-cards");
-  playlistContainer.insertBefore(
-    createPlaylistElement(newPlaylist),
-    playlistContainer.firstChild
-  );
+  playlistContainer.insertBefore(playlistElement, playlistContainer.firstChild);
   event.target.reset();
   renderLikes();
 }
