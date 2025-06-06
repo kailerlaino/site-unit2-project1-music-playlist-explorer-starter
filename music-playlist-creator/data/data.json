@@ -47,5 +47,101 @@
         "duration": 200
       }
     ]
+  },
+  {
+    "playlistID": "pl_3",
+    "playlist_name": "Morning Boost",
+    "playlist_author": "Charlie",
+    "playlist_art": "https://picsum.photos/id/1015/200/300",
+    "playlist_likes": "245",
+    "songs": [
+      {
+        "songID": "s_301",
+        "title": "Sunrise Anthem",
+        "artist": "WakeUp Call",
+        "duration": 180
+      },
+      {
+        "songID": "s_302",
+        "title": "Fresh Start",
+        "artist": "Early Birds",
+        "duration": 172
+      }
+    ]
+  },
+  {
+    "playlistID": "pl_4",
+    "playlist_name": "Late Night Drive",
+    "playlist_author": "Dana",
+    "playlist_art": "https://picsum.photos/id/1025/200/300",
+    "playlist_likes": "87",
+    "songs": [
+      {
+        "songID": "s_401",
+        "title": "Neon Lights",
+        "artist": "City Cruisers",
+        "duration": 220
+      },
+      {
+        "songID": "s_402",
+        "title": "Moonlit Road",
+        "artist": "Night Riders",
+        "duration": 205
+      },
+      {
+        "songID": "s_403",
+        "title": "Highway Dreams",
+        "artist": "DriveTime",
+        "duration": 198
+      }
+    ]
+  },
+  {
+    "playlistID": "pl_5",
+    "playlist_name": "Focus Flow",
+    "playlist_author": "Eve",
+    "playlist_art": "https://picsum.photos/id/1035/200/300",
+    "playlist_likes": "312",
+    "songs": [
+      {
+        "songID": "s_501",
+        "title": "Deep Work",
+        "artist": "Concentration Crew",
+        "duration": 240
+      }
+    ]
+  },
+  {
+    "playlistID": "pl_6",
+    "playlist_name": "Party Time",
+    "playlist_author": "Frank",
+    "playlist_art": "https://picsum.photos/id/1045/200/300",
+    "playlist_likes": "512",
+    "songs": [
+      {
+        "songID": "s_601",
+        "title": "Dance Floor",
+        "artist": "Groove Makers",
+        "duration": 210
+      },
+      {
+        "songID": "s_602",
+        "title": "Turn It Up",
+        "artist": "DJ Hype",
+        "duration": 195
+      },
+      {
+        "songID": "s_603",
+        "title": "Midnight Bash",
+        "artist": "Party Squad",
+        "duration": 230
+      },
+      {
+        "songID": "s_604",
+        "title": "Encore",
+        "artist": "The Finishers",
+        "duration": 180
+      }
+    ]
   }
 ]
