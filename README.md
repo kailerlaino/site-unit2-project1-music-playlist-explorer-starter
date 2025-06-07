@@ -25,7 +25,7 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
     - [x] Author
     - [x] Like count
 
-- [ ] **Playlist Details**
+- [x] **Playlist Details**
   - [x] Create a modal pop-up view that displays detailed information about a playlist when a user clicks on a playlist tile.
   - [x] The modal should show the playlist's:
     - [x] Cover image
@@ -41,7 +41,7 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
     - [x] Appear floating on the screen.
     - [x] The backdrop should appear darker or in a different shade.
 
-- [ ] **Like Playlists**
+- [x] **Like Playlists**
   - [x] Implement functionality to allow users to like playlists by clicking a heart icon on each playlist tile.
   - [x] When the heart icon is clicked:
     - [x] If previously unliked:
@@ -59,7 +59,7 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
   - [x] When the shuffle button is clicked, the playlist's songs should display in a different order.
   - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** In addition to showcasing the above features, for ease of grading, please show yourself shuffling the same playlist more than once. 
   
-- [ x] **Featured Page**
+- [x] **Featured Page**
   - [x] Application includes a dedicated page that randomly selects and displays a playlist, showing the playlist’s:
     - [x] Playlist Image
     - [x] Playlist Name
@@ -76,34 +76,34 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
 #### STRETCH FEATURES
 
 - [ ] **Add New Playlists**
-  - [ ] Allow users to create new playlists.
-  - [ ] Using a form, users can input playlist:
+  - [x] Allow users to create new playlists.
+  - [x] Using a form, users can input playlist:
     - [x] Name
     - [x] Author
     - [x] Cover image
-    - [ ] Add one or more songs to the playlist, specifying the song's:
-      - [ ] Title
-      - [ ] Artist
+    - [x] Add one or more songs to the playlist, specifying the song's:
+      - [x] Title
+      - [x] Artist
   - [x] The resulting playlist should display in the grid view.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself adding at least two songs to the playlist. 
+  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself adding at least two songs to the playlist. 
 
 - [ ] **Edit Existing Playlists**
-  - [ ] Enable users to modify the details of existing playlists.
-  - [ ] Add an edit button to each playlist tile.
-  - [ ] Users can update the playlist:
+  - [x] Enable users to modify the details of existing playlists.
+  - [x] Add an edit button to each playlist tile.
+  - [x] Users can update the playlist:
     - [x] Name
     - [x] Author
-    - [ ] Songs
-  - [ ] The playlist grid view and playlist detail modal should update to display any changes (see Required Features, Criterion 1 & 2).
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself:
+    - [x] Songs
+  - [x] The playlist grid view and playlist detail modal should update to display any changes (see Required Features, Criterion 1 & 2).
+  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself:
     - [ ] Editing all of a playlist's features (name, creator, AND songs)
-    - [ ] Editing some of a playlist's features (name, creator, OR songs) 
+    - [x] Editing some of a playlist's features (name, creator, OR songs) 
 
 - [x] **Delete Playlists**
   - [x] Add a delete button to each playlist tile within the grid view.
   - [x] When clicked, the playlist is removed from the playlist grid view.
 
-- [ ] **Search Functionality**
+- [x] **Search Functionality**
   - [x] Implement a search bar that allows users to filter playlists by:
     - [x] Name 
     - [x] Author
@@ -117,7 +117,7 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
   - [x] User can click the clear button. When clicked:
     - [x] All text in the text input field is deleted
     - [x] All playlists in the `data.json` file are displayed in a grid view
-    - [ ] **Optional:** If the Add Playlist, Edit Existing Playlist, or Delete Playlist stretch features were implemented:
+    - [x] **Optional:** If the Add Playlist, Edit Existing Playlist, or Delete Playlist stretch features were implemented:
       - [x] If users can add a playlist, added playlists should be included in search results.
       - [x] If users can edit a playlist, search results should reflect the latest edits to each playlist.
       - [x] If users can delete a playlist, deleted playlists should no longer be included in search results.
