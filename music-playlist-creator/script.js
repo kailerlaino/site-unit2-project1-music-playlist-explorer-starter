@@ -1,11 +1,10 @@
 let lastReviewId = 0;
 
+
 let playlistState = [];
-let playlistJSON = [];
 
 document.addEventListener("DOMContentLoaded", async (event) => {
-  await fetchPlaylists();
-  renderPlaylists();
+  await renderPlaylists();
   renderLikes();
   document
     .getElementById("playlist-form")
@@ -14,21 +13,14 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 });
 
 /* Display Playlists */
-async function fetchPlaylists() {
+async function renderPlaylists() {
   await fetch("data/data.json")
     .then((response) => response.json())
     .then((playlists) => {
-      playlistJSON = playlists;
       // playlistState = playlists;
-      
-    })
-    .catch((error) => console.error("Error loading playlists:", error));
-}
-
-function renderPlaylists() {
-  lastReviewId = playlistJSON.length;
+      lastReviewId = playlists.length;
       const playlistContainer = document.getElementById("playlist-cards");
-      playlistState = playlistJSON.map((playlist) => {
+      playlistState = playlists.map((playlist) => {
         const playlistElement = createPlaylistElement(playlist);
         playlistContainer.appendChild(playlistElement);
         return {
@@ -38,6 +30,8 @@ function renderPlaylists() {
           element: playlistElement,
         };
       });
+    })
+    .catch((error) => console.error("Error loading playlists:", error));
 }
 
 /* Playlist Tile Components */
@@ -45,8 +39,6 @@ function createPlaylistElement(playlist) {
   const div = document.createElement("div");
   div.className = "playlist";
   div.setAttribute("data-date", new Date());
-  div.setAttribute("data-id", playlist.playlistID);
-  console.log(playlist.playlistID)
   div.innerHTML = `
       <img 
         onclick='openModal(${JSON.stringify(playlist)})'
@@ -79,7 +71,6 @@ function createSongElement(song) {
       <div>
         <h4>${song.title}</h4>
         <p>${song.artist}</p>
-        <button onclick="deleteSong(this)">Delete</button>
         <br>
       </div>
       <p class="duration">${song.duration} seconds</p>
@@ -92,43 +83,17 @@ const span = document.getElementsByClassName("close")[0];
 
 function openModal(playlist) {
   document.getElementById("modal-name").innerHTML = `${playlist.playlist_name}`;
-  document.getElementById(
-    "modal-author"
-  ).innerHTML = `${playlist.playlist_author}`;
-  document.getElementById(
-    "modal-playlist-art"
-  ).src = `${playlist.playlist_art}`;
+  document.getElementById("modal-author").innerHTML = `${playlist.playlist_author}`;
+  document.getElementById("modal-playlist-art").src = `${playlist.playlist_art}`;
   const songContainer = document.getElementById("modal-songs");
   songContainer.innerHTML = "";
   playlist.songs.forEach((song) => {
     const songElement = createSongElement(song);
     songContainer.appendChild(songElement);
   });
-  const deletePlaylist = document.createElement("div");
-  deletePlaylist.innerHTML = `
-  <div id="song-form">
-            <h3>Songs</h3>
-            <div>
-              <label for="song-name-1">Song Title:</label>
-              <input type="text" id="song-name-1" name="song-name-1" required />
-              <label for="song-artist-1">Song Title:</label>
-              <input
-                type="text"
-                id="song-artist-1"
-                name="song-artist-1"
-                required
-              />
-              <button onclick="newSong()" type="submit">Add Song</button>
-
-            </div>
-          </div>
-  `
-  songContainer.appendChild(deletePlaylist)
   const songs = Array.from(songContainer);
   modal.style.display = "block";
 }
-
-
 
 span.onclick = function () {
   modal.style.display = "none";
@@ -184,8 +149,7 @@ function handleReviewSubmit(event) {
   const playlist_art = document.getElementById("playlist-art").value;
 
   lastReviewId += 1;
-  newID = lastReviewId;
-  console.log(event);
+  newID = "pl_" + lastReviewId;
 
   const newPlaylist = {
     playlistID: newID,
@@ -193,29 +157,12 @@ function handleReviewSubmit(event) {
     playlist_author,
     playlist_art,
     playlist_likes: 0,
-    songs: [
-      {
-        songID: "s_101",
-        title: song_name_1,
-        artist: song_artist_1,
-        duration: 200
-      },
-      {
-        songID: "s_102",
-        title: song_name_2,
-        artist: song_artist_2,
-        duration: 130
-      }
-    ] 
   };
-  playlistJSON.push(newPlaylist)
-  console.log("playlist JSON: "+ playlistJSON)
 
-  console.log(newPlaylist)
   playlistElement = createPlaylistElement(newPlaylist);
 
   playlistState[lastReviewId] = {
-    id: newID,
+    id: newID + lastReviewId,
     name: playlist_name,
     artist: playlist_author,
     element: playlistElement,
@@ -227,28 +174,6 @@ function handleReviewSubmit(event) {
   renderLikes();
 }
 
-function newSong() {
-  document.getElementById("song-form");
-  document
-    .getElementById("song-form")
-    .addEventListener("submit", handleSong);
-  const div = document.createElement("div");
-  div.innerHTML = `
-  <p>what's up</p>
-  `;
-  container.appendChild(div);
-}
-
-function handleSong(event) {
-  const song_name_1 = document.getElementById("song-name-1").value;
-  const song_artist_1 = document.getElementById("song-artist-1").value;
-  const container = document.getElementById("song-form")
-  const div = document.createElement("div")
-  div.innerHTML = `
-
-  `
-  container.appendChild(div);
-}
 
 /* Edit Existing Playlists */
 // TODO: Allow users to edit songs
@@ -259,8 +184,7 @@ function editPlaylist(button) {
   let imgCell = children[0];
   let artistCell = children[1];
   let nameCell = children[2];
-  let updatePlaylist = playlistJSON[playlist.dataset.id]
-  
+
   let imgInput = prompt("Enter the updated img link:", imgCell.innerHTML);
   let nameInput = prompt(
     "Enter the updated playlist name:",
@@ -268,19 +192,9 @@ function editPlaylist(button) {
   );
   let artistInput = prompt("Enter the updated artist:", nameCell.innerHTML);
 
-
   imgCell.innerHTML = imgInput;
-  updatePlaylist.playlist_art = imgInput;
   nameCell.innerHTML = nameInput;
-  updatePlaylist.playlist_name = nameInput
   artistCell.innerHTML = artistInput;
-  updatePlaylist.playlist_author = artistInput
-
-  let container = document.getElementById('playlist-cards')
-  container.removeChild(playlist);
-  let newPlaylist = createPlaylistElement(updatePlaylist);
-  container.appendChild(newPlaylist);
-
 }
 
 /* Delete Playlists */
@@ -288,12 +202,6 @@ function deletePlaylist(button) {
   let playlistContainer = button.parentNode.parentNode;
   let playlist = button.parentNode;
   playlistContainer.removeChild(playlist);
-}
-
-function deleteSong(button) {
-  let songContainer = button.parentNode.parentNode.parentNode;
-  let song = button.parentNode.parentNode
-  songContainer.removeChild(song);
 }
 
 /* Search Functionality */
