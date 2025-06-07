@@ -132,28 +132,23 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+`https://www.loom.com/share/b1f59afd121c4d428d3747f810f7b3cd?sid=3b34041c-e9dd-46a2-9614-0b2c9c48f208`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes, I especially think the lecture on event listeners and advanced javascript was useful because there was a lot of javascript functionality that we had to implement. Some of which I had not previously been familiar with.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would have completely implemented the stretch features. I think the way that I handled data made things harder than it should've been so I would've completely redesigned by data storage as well. I also wish I got more time to work on design, but I was focused on functionality over looks.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
-
-### Open-source libraries used
-
-- Add any links to open-source libraries used in your project.
+I really liked the design of some of my peers. I think that everyone had their own special style or flair that they added to their projects and I really enjoyed seeing their personality shine through during their presentations. I actually saw a way to implement one of the features from another peer and decided to change my implementation to follow what they did.
 
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Shoutout to Jesus he helped me a lot to debug and whiteboard many different issues. 
