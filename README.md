@@ -2,11 +2,11 @@
 
 ## Unit Assignment: Music Playlist Explorer
 
-Submitted by: **NAME**
+Submitted by: **Kailer Laino**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **15** hours spent in total
 
-Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD_LINK_HERE)
+Deployed Application (**required**): [Music Playlist Explorer Deployed Site](https://project1-music-playlist-explorer.onrender.com/)
 
 ### Application Features
 
