@@ -81,11 +81,11 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
     - [x] Name
     - [x] Author
     - [x] Cover image
-    - [x] Add one or more songs to the playlist, specifying the song's:
-      - [x] Title
-      - [x] Artist
+    - [ ] Add one or more songs to the playlist, specifying the song's:
+      - [ ] Title
+      - [ ] Artist
   - [x] The resulting playlist should display in the grid view.
-  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself adding at least two songs to the playlist. 
+  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself adding at least two songs to the playlist. 
 
 - [ ] **Edit Existing Playlists**
   - [x] Enable users to modify the details of existing playlists.
@@ -93,7 +93,7 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD
   - [x] Users can update the playlist:
     - [x] Name
     - [x] Author
-    - [x] Songs
+    - [] Songs
   - [x] The playlist grid view and playlist detail modal should update to display any changes (see Required Features, Criterion 1 & 2).
   - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS:** For ease of grading, please show yourself:
     - [ ] Editing all of a playlist's features (name, creator, AND songs)
