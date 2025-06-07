@@ -1,6 +1,6 @@
 [
   {
-    "playlistID": "pl_1",
+    "playlistID": "1",
     "playlist_name": "Chill Vibes",
     "playlist_author": "Alice",
     "playlist_art": "https://picsum.photos/id/237/200/300",
@@ -21,11 +21,11 @@
     ]
   },
   {
-    "playlistID": "pl_2",
+    "playlistID": "2",
     "playlist_name": "Workout Hits",
     "playlist_author": "Bob",
     "playlist_art": "https://picsum.photos/seed/picsum/200/300",
-    "playlist_likes": "100",
+    "playlist_likes": "0",
 
     "songs": [
       {
@@ -49,7 +49,7 @@
     ]
   },
   {
-    "playlistID": "pl_3",
+    "playlistID": "3",
     "playlist_name": "Morning Boost",
     "playlist_author": "Charlie",
     "playlist_art": "https://picsum.photos/id/1015/200/300",
@@ -70,7 +70,7 @@
     ]
   },
   {
-    "playlistID": "pl_4",
+    "playlistID": "4",
     "playlist_name": "Late Night Drive",
     "playlist_author": "Dana",
     "playlist_art": "https://picsum.photos/id/1025/200/300",
@@ -97,7 +97,7 @@
     ]
   },
   {
-    "playlistID": "pl_5",
+    "playlistID": "5",
     "playlist_name": "Focus Flow",
     "playlist_author": "Eve",
     "playlist_art": "https://picsum.photos/id/1035/200/300",
@@ -112,7 +112,7 @@
     ]
   },
   {
-    "playlistID": "pl_6",
+    "playlistID": "6",
     "playlist_name": "Party Time",
     "playlist_author": "Frank",
     "playlist_art": "https://picsum.photos/id/1045/200/300",
